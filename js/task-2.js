@@ -1,3 +1,5 @@
+'use strict';
+
 const images = [
   {
     url: "https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?dpr=2&h=750&w=1260",
@@ -24,3 +26,50 @@ const images = [
     alt: "Lighthouse Coast Sea",
   }
 ];
+
+
+
+// Напиши скрипт для створення галереї зображень на 
+// основі масиву даних. HTML містить список ul.gallery.
+
+// <ul class="gallery"></ul>
+
+
+// Використовуй масив об'єктів images для створення елементів <img>, вкладених в <li>.
+
+
+
+// Ти можеш створити й додати HTML-елементи, використовуючи document.createElement()
+//  і elem.append() або шаблонні рядки і elem.insertAdjacentHTML().
+
+
+
+// Усі елементи галереї повинні додаватися в DOM за одну операцію додавання.
+// Додай мінімальне оформлення галереї флексбоксами через CSS класи.
+
+// Вимоги
+
+// Створено й додано в DOM галерею із шести зображень.
+// Галерея додана у список ul.gallery і являє собою 6 елементів <li>, в які вкладені елементи <img>.
+// Для створення елементів <img> використані дані з масиву об'єктів images.
+// Усі елементи галереї додані в DOM за одну операцію додавання.
+// Є мінімальне оформлення галереї флексбоксами через CSS класи.
+
+
+const gallery = document.querySelector(".gallery");
+const fragment = document.createDocumentFragment();
+
+images.forEach(({ url, alt }) => {
+  const li = document.createElement("li");
+  li.className = "gallery-item";
+
+  const img = document.createElement("img");
+  img.src = url;
+  img.alt = alt;
+  img.className = "gallery-image";
+
+  li.append(img);
+  fragment.append(li);
+});
+
+gallery.append(fragment);
